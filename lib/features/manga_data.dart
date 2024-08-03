@@ -28,5 +28,5 @@ Future<Widget> fetchCover(String id) async {
   final coverName = coverNameData['data']['attributes']['fileName'];
   final cover = "$mdUploadUrl/covers/$id/$coverName";
 
-  return SizedBox(child: Image.network(cover), width: 200, height: 300);
+  return SizedBox(height: 300, child: Image.network(cover));
 }

@@ -4,7 +4,7 @@ import 'package:yomi/features/manga_data.dart';
 class MangaCard extends StatelessWidget {
   final String id;
 
-  const MangaCard({required this.id});
+  const MangaCard({super.key, required this.id});
 
   Future<Map<String, dynamic>> fetchMangaData(String id) async {
     final mangaData = await fetchManga(id);
