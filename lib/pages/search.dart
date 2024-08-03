@@ -11,7 +11,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  String query = '';
+  String? query;
   Future<List<dynamic>>? searchResults;
 
   void updateSearch(String query) {
@@ -28,7 +28,6 @@ class _SearchPageState extends State<SearchPage> {
           padding: const EdgeInsets.all(24),
           child: searchBar(updateSearch),
         ),
-
         if (searchResults != null)
           FutureBuilder(
             future: searchResults,
@@ -40,7 +39,7 @@ class _SearchPageState extends State<SearchPage> {
               } else {
                 return Column(
                   children: (snapshot.data ?? []).map((data) =>
-                  mangaCard(mangaCardFuture(data['id'].toString()))).toList(),
+                  MangaCard(id: data['id'].toString())).toList(),
                 );
               }
             }

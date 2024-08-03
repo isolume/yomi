@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:yomi/library.dart';
-import 'package:yomi/search.dart';
+import 'package:yomi/pages/library.dart';
+import 'package:yomi/pages/search.dart';
 
 void main() {
   runApp(const MainApp());
@@ -91,4 +91,3 @@ class _HomePageState extends State<HomePage> {
       });
   }
 }
-
