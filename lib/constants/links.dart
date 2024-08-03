@@ -1,0 +1,2 @@
+const mdApiUrl = '';
+const mdUploadUrl = '';

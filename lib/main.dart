@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yomi/library.dart';
+import 'package:yomi/search.dart';
 
 void main() {
   runApp(const MainApp());
@@ -53,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       case 0:
         page = const LibraryPage();
       case 1:
-        page = const Placeholder();
+        page = const SearchPage();
       default:
         throw UnimplementedError('No widget for $selectedIndex');
     }
@@ -79,6 +80,7 @@ class _HomePageState extends State<HomePage> {
             ],
             currentIndex: selectedIndex,
             selectedItemColor: Theme.of(context).colorScheme.primary,
+            backgroundColor: Theme.of(context).colorScheme.surfaceBright,
             onTap: (value) {
               setState(() {
                 selectedIndex = value;
