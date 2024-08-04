@@ -22,29 +22,33 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(24),
-          child: searchBar(updateSearch),
-        ),
-        if (searchResults != null)
-          FutureBuilder(
-            future: searchResults,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              } else {
-                return Column(
-                  children: (snapshot.data ?? []).map((data) =>
-                  MangaCard(id: data['id'].toString())).toList(),
-                );
-              }
-            }
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(24),
+            child: searchBar(updateSearch),
           ),
-      ],
+          if (searchResults != null)
+            FutureBuilder(
+              future: searchResults,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  return GridView.count(
+                    crossAxisCount: 3,
+                    shrinkWrap: true,
+                    children: (snapshot.data ?? []).map((data) =>
+                    MangaCard(id: data['id'].toString())).toList(),
+                  );
+                }
+              }
+            ),
+        ],
+      ),
     );
   }
 }

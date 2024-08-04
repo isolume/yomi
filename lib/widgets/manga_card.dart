@@ -31,13 +31,11 @@ class MangaCard extends StatelessWidget {
         } else {
           final mangaData = snapshot.data!['mangaData'];
           final cover = snapshot.data!['cover'];
-          return Card(
-            child: Column(
-              children: [
-                cover,
-                Text(mangaData['attributes']['title']['en'].toString()),
-              ],
-            ),
+          return Column(
+            children: [
+              cover,
+              Text(mangaData['attributes']['title']['en'].toString()),
+            ],
           );
         }
       },
